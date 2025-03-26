@@ -1,12 +1,13 @@
 using API.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(StoreContext context)
+        public static async Task Initialize(StoreContext context)
         {
-            if (context.Products.Any()) return;
+            if (await context.Products.AnyAsync()) return;
 
             var products = new List<Product>
             {
@@ -208,12 +209,8 @@ namespace API.Data
                 },
             };
 
-            foreach (var product in products)
-            {
-                context.Products.Add(product);
-            }
-
-            context.SaveChanges();
+            await context.Products.AddRangeAsync(products);
+            await context.SaveChangesAsync();
         }
     }
 }

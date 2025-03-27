@@ -20,6 +20,6 @@ RUN mkdir -p /app/data
 RUN chmod 755 /app/data
 
 # Set environment variables
-ENV ASPNETCORE_URLS=http://+:$PORT
+ENV ASPNETCORE_URLS=http://+:5000
 
 ENTRYPOINT ["dotnet", "API.dll"]

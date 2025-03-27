@@ -6,7 +6,7 @@ import { PaginatedResponse, Product, Basket, User } from '../models';
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
+axios.defaults.baseURL = 'https://restore-crfi.onrender.com/api/';
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(config => {
